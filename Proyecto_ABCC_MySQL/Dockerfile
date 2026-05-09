@@ -25,11 +25,10 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Permisos
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
-    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-
+    && chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
+    
 EXPOSE 80
 
-RUN chmod -R 777 /var/www/html/storage
 # Arrancar Apache y correr migraciones
 #CMD php artisan migrate --force && apache2-foreground
 CMD php artisan migrate --force --no-interaction 2>/dev/null; apache2-foreground
