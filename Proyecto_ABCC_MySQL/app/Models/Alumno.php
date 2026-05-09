@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alumno extends Model
 {
+    
     use HasFactory;
+
+    public $timestamps = false;    
 
     protected $fillable = [
         'Num_Control',
