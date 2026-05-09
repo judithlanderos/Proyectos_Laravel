@@ -26,7 +26,10 @@ RUN composer install --no-dev --optimize-autoloader
 # Permisos
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
-    
+
+RUN php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\AdminLteServiceProvider" --tag=assets 2>/dev/null || true \
+    && php artisan storage:link 2>/dev/null || true
+
 EXPOSE 80
 
 # Arrancar Apache y correr migraciones
