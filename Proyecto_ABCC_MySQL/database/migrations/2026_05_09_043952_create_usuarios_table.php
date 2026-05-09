@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::createIfNotExists('usuarios', function (Blueprint $table) {
+         if (!Schema::hasTable('usuarios')) {
+        Schema::create('usuarios', function (Blueprint $table) {
         $table->id();
         $table->string('nombre');
         $table->string('correo')->unique();
         $table->string('password');
         $table->timestamps();
         });
+         }
     }
 
     /**

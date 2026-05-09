@@ -11,7 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::createIfNotExists('alumnos', function (Blueprint $table) {
+         if (!Schema::hasTable('usuarios')) {
+        Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
             $table->string("Num_Control")->unique();
             $table->string("Nombre");
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->string("Carrera");
             $table->timestamps();
         });
+         }
     }
 
     /**
