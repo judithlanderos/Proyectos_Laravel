@@ -32,6 +32,7 @@ RUN php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\AdminLteS
 
 EXPOSE 80
 
+RUN php artisan config:cache
 # Arrancar Apache y correr migraciones
 #CMD php artisan migrate --force && apache2-foreground
 CMD php artisan migrate --force --no-interaction 2>/dev/null; apache2-foreground
