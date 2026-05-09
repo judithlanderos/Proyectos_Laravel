@@ -87,8 +87,9 @@ class AlumnoController extends Controller
     {
         $filtro = $request->input('filtro');
 
-        $alumnos = Alumno::latest()->paginate(5);
+        //$alumnos = Alumno::latest()->paginate(5);
 
+        $alumnos = Alumno::paginate(5);
         return view('index', compact('alumnos', 'filtro'));
     }
 

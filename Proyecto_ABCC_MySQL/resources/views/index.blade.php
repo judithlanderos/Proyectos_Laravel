@@ -61,7 +61,7 @@
 
                             <td>
 
-                                <form action="{{ route('alumnos.destroy', $a) }}"
+                                <form action="{{ route('alumnos.destroy', $a->id) }}"
                                       method="POST"
                                       onsubmit="return confirmarEliminacion()">
 
